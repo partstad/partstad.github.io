@@ -6,7 +6,7 @@
         content="PartSTAD: 2D-to-3D Part Segmentation Task Adaptation">
   <meta name="keywords" content="PartSTAD, Part Segmentation, Few-shot">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
+  <title>PartSTAD: 2D-to-3D Part Segmentation Task Adaptation</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -63,17 +63,8 @@
           More Research
         </a>
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
+          <a class="navbar-item" href="https://partstad.github.io">
+            PartSTAD
           </a>
         </div>
       </div>
@@ -88,7 +79,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">PartSTAD: </h1>
+          <h1 class="title is-1 publication-title">PartSTAD: 2D-to-3D Part Segmentation Task Adaptation</h1>
           <div style="font-size:x-large;">ECCV 2024</div><br>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -140,7 +131,7 @@
         <img src="./figure/teaser.png" alt="header" style="max-width:80%;">
       </div>
   </div>
-</section>
+</section><br><br><hr>
 
 
 <section class="section">
@@ -158,7 +149,7 @@
     </div>
     <!--/ Abstract. -->
   </div>
-</section>
+</section><br><br><hr>
 
 
 <section class="section">
@@ -168,17 +159,17 @@
     <div class="columns is-centered has-text-centered is-flex-direction-column">
       <h2 class="title is-4">Overall Pipeline</h2>
       <div class="container">
-        <img src="./figure/main_pipeline.svg" alt="Framework" style="max-width:90%;">
+        <img src="./figure/main_pipeline.png" alt="Framework" style="max-width:90%;">
       </div>
       <div class="content has-text-justified">
         <p></p>
         <p style="font-size: 110%;">
-          Our approach begins by rendering the provided 3D point cloud from multiple viewpoints. Subsequently, we extract 2D bounding boxes for its parts using GLIP [] (Bounding Box Prediction); note that we utilize the finetuned GLIP model from PartSLIP []. Following this, we convert the bounding boxes into segmentation masks using SAM [], extracting the foreground region for each bounding box (SAM Mask Integration). Next, we predict weights for all the masks and adaptively combine them into a 3D representation (2D-to-3D task adaptation). The final step involves obtaining the segmentation label for the input point cloud. The GLIP and SAM models are frozen, while only our novel weight prediction network is trained per category in a few-shot setting (8 objects).
+          Our approach begins by rendering the provided 3D point cloud from multiple viewpoints. Subsequently, we extract 2D bounding boxes for its parts using GLIP  (Bounding Box Prediction); note that we utilize the finetuned GLIP model from PartSLIP . Following this, we convert the bounding boxes into segmentation masks using SAM , extracting the foreground region for each bounding box (SAM Mask Integration). Next, we predict weights for all the masks and adaptively combine them into a 3D representation (2D-to-3D task adaptation). The final step involves obtaining the segmentation label for the input point cloud. The GLIP and SAM models are frozen, while only our novel weight prediction network is trained per category in a few-shot setting (8 objects).
         </p>
       </div>
     </div>
   </div>
-</section><hr>
+</section><br><br><hr>
 
 <section class="section"></section>
   <div class="container is-max-desktop">
@@ -187,28 +178,28 @@
     <div class="columns is-centered has-text-centered is-flex-direction-column">
       <h2 class="title is-4">Key Idea</h2>
       <div class="container">
-        <img src="./figure/motivation.svg" alt="KeyIdea" style="max-width:90%;">
+        <img src="./figure/motivation.png" alt="KeyIdea" style="max-width:90%;">
       </div>
       <div class="content has-text-justified">
         <p></p>
         <p style="font-size: 110%;">
-          Although the main task is 3D part segmentation, Previous work [] finetunes 2D VLM (GLIP []) using VLM’s objective instead of main task as an objective. Thus we propose a <b>task adaptation approach that adapts 2D task to 3D task</b>, instead of the conventional domain adaptation, which fails to fully exploiting 3D segmentation results.
+          Although the main task is 3D part segmentation, Previous work  finetunes 2D VLM (GLIP ) using VLM’s objective instead of main task as an objective. Thus we propose a <b>task adaptation approach that adapts 2D task to 3D task</b>, instead of the conventional domain adaptation, which fails to fully exploiting 3D segmentation results.
         </p>
-        <p style="font-size: 110%;"></p>
+        <p style="font-size: 110%;">
           However, our new objective function (3D mRIoU Loss) is not differentiable w.r.t GLIP’s output, we propose an alternative approach, <b>Weight Prediction & Score Reformulation</b>. (Please refer the main paper for details.)
         </p>
-        <p>
+        <p style="font-size: 110%;">
           Additionally, we improve performance by using the bounding boxes predicted by GLIP as conditions for SAM to perform mask refinement.
         </p>
       </div>
     </div>
   </div>
-</section><hr>
+</section><br><br><hr>
 
 
 <section class="hero teaser">
   <div class="columns is-centered has-text-centered is-flex-direction-column"><br>
-    <h2 class="title is-4">Results on PartNet-Mobility [] Dataset</h2>
+    <h2 class="title is-4">Qualitative Results on PartNet-Mobility Dataset</h2>
   </div>
   <div class="container is-max-desktop is-centered has-text-centered">
     <p style="font-size: 120%;"><span class="dnerf">PartSTAD</span> segments 3D parts more precisely with clearer boundaries, even for small (Chair) and thin (Clock) parts.
@@ -217,7 +208,7 @@
   <br><br>
   <div class="columns is-centered has-text-centered is-flex-direction-column">
     <div class="container" style="width:75%;">
-      <img src="./figure/partnet_mobility_qualitative.svg" alt="comparison-02" style="max-width:80%;">
+      <img src="./figure/partnet_mobility_qualitative.png" alt="comparison-02" style="max-width:80%;">
     </div>
   </div>
 </section><br><br><hr>
@@ -227,7 +218,7 @@
 
 <section class="hero teaser"></section>
   <div class="columns is-centered has-text-centered is-flex-direction-column"><br>
-    <h2 class="title is-4">Results on OmniObject3D [] Dataset</h2>
+    <h2 class="title is-4">Qualitative Results on OmniObject3D  Dataset</h2>
   </div>
   <div class="container is-max-desktop is-centered has-text-centered">
     <p style="font-size: 120%;">Although <span class="dnerf">PartSTAD</span> is trained on a synthetic dataset, it also performs well on the real scanned 3D object dataset, OmniObject3D.
@@ -236,7 +227,7 @@
   <br><br>
   <div class="columns is-centered has-text-centered is-flex-direction-column">
     <div class="container" style="width:75%;">
-      <img src="./figure/omniobject3d_qualitative.svg" alt="comparison-02" style="max-width:80%;">
+      <img src="./figure/omniobject3d_qualitative.png" alt="comparison-02" style="max-width:80%;">
     </div>
   </div>
 </section><br><br><hr>
