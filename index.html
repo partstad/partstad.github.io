@@ -164,7 +164,7 @@
       <div class="content has-text-justified">
         <p></p>
         <p style="font-size: 110%;">
-          Our approach begins by rendering the provided 3D point cloud from multiple viewpoints. Subsequently, we extract 2D bounding boxes for its parts using GLIP  (Bounding Box Prediction); note that we utilize the finetuned GLIP model from PartSLIP . Following this, we convert the bounding boxes into segmentation masks using SAM , extracting the foreground region for each bounding box (SAM Mask Integration). Next, we predict weights for all the masks and adaptively combine them into a 3D representation (2D-to-3D task adaptation). The final step involves obtaining the segmentation label for the input point cloud. The GLIP and SAM models are frozen, while only our novel weight prediction network is trained per category in a few-shot setting (8 objects).
+          Our approach begins by rendering the provided 3D point cloud from multiple viewpoints. Subsequently, we extract 2D bounding boxes for its parts using GLIP (Bounding Box Prediction); note that we utilize the finetuned GLIP model from PartSLIP . Following this, we convert the bounding boxes into segmentation masks using SAM, extracting the foreground region for each bounding box (SAM Mask Integration). Next, we predict weights for all the masks and adaptively combine them into a 3D representation (2D-to-3D task adaptation). The final step involves obtaining the segmentation label for the input point cloud. The GLIP and SAM models are frozen, while only our novel weight prediction network is trained per category in a few-shot setting (8 objects).
         </p>
       </div>
     </div>
@@ -183,7 +183,7 @@
       <div class="content has-text-justified">
         <p></p>
         <p style="font-size: 110%;">
-          Although the main task is 3D part segmentation, Previous work  finetunes 2D VLM (GLIP ) using VLM’s objective instead of main task as an objective. Thus we propose a <b>task adaptation approach that adapts 2D task to 3D task</b>, instead of the conventional domain adaptation, which fails to fully exploiting 3D segmentation results.
+          Although the main task is 3D part segmentation, Previous work  finetunes 2D VLM (GLIP) using VLM’s objective instead of main task as an objective. Thus we propose a <b>task adaptation approach that adapts 2D task to 3D task</b>, instead of the conventional domain adaptation, which fails to fully exploiting 3D segmentation results.
         </p>
         <p style="font-size: 110%;">
           However, our new objective function (3D mRIoU Loss) is not differentiable w.r.t GLIP’s output, we propose an alternative approach, <b>Weight Prediction & Score Reformulation</b>. (Please refer to the main paper for details.)
@@ -218,7 +218,7 @@
 
 <section class="hero teaser"></section>
   <div class="columns is-centered has-text-centered is-flex-direction-column"><br>
-    <h2 class="title is-4">Qualitative Results on OmniObject3D  Dataset</h2>
+    <h2 class="title is-4">Qualitative Results on OmniObject3D Dataset</h2>
   </div>
   <div class="container is-max-desktop is-centered has-text-centered">
     <p style="font-size: 120%;">Although <span class="dnerf">PartSTAD</span> is trained on a synthetic dataset, it also performs well on the real scanned 3D object dataset, OmniObject3D.
